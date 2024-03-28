@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Bubblegum Sans' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Spot on Yazdani</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: rgb(0, 0, 0); /* Background color for demonstration */
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: transparent;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar-brand {
+            font-size: 2.0rem;
+            color: #fff;
+            margin-left: 30px; /* Adjust margin to push it to the left */
+            font-family: 'Helvetica'; /* Fancy font */
+        }
+
+        .navbar-menu {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .navbar-menu li {
+            margin-left: 30px; /* Adjust margin to push the menu items to the right */
+        }
+
+        .navbar-menu li:first-child {
+            margin-left: auto; /* Push the first menu item to the right corner */
+        }
+
+        .navbar-menu a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1.4rem;
+            transition: color 0.3s ease;
+            font-family: 'Roboto', sans-serif; /* Backup font */
+        }
+
+        .navbar-menu a:hover {
+            color: #ccc;
+        }
+
+        .photograph {
+            margin-top: 4cm;
+            margin-left: 4cm;
+        }
+
+        .captionhome {
+            color: rgb(71, 70, 70);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .introme {
+            width: 300px; /* Adjust the width as needed */
+            margin-left: 70px; /* Adjust the negative margin to move the photo towards the left */
+        }
+
+        .section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        .left-content,
+        .right-content {
+            opacity: 0;
+            transform: translateX(-50%);
+            transition: opacity 1s, transform 1s;
+        }
+
+        .left-content.appear-left,
+        .right-content.appear-right {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        #contact,#cv,#projects {
+            color: beige;
+        }
+
+        #home {
+    color: beige; /* Set text color for home section */
+}
+
+
+.openingcaption {
+    color: beige;
+    font-family: 'sans-arif';font-size: 22px;
+}
+
+.openingcaption.pop-in {
+    color: rgb(255, 255, 255); /* Initial color when popping in */
+    font-size: xx-large; /* Initial font size */
+    animation: pop-in-animation 1s forwards; /* Apply pop-in animation */
+}
+
+@keyframes pop-in-animation {
+    15% {
+        color: rgb(255, 255, 255);
+        font-size: xx-large;
+    }
+    50% {
+        color: rgb(255, 255, 255); /* Color transition to blue */
+    }
+    100% {
+        color: white; /* Final color after popping in */
+        font-size: 70px; /* Return to original font size */
+    }
+}
+
+/* Apply transition effect */
+#home .left-content,
+#home .right-content {
+    opacity: 0;
+    transform: translateX(-50%);
+    transition: opacity 1s, transform 1s;
+}
+
+#home .left-content.appear-left,
+#home .right-content.appear-right {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+#start .left-content,
+#start .right-content {
+    opacity: 0;
+    transform: translateX(-50%);
+    transition: opacity 1s, transform 1s;
+}
+
+#start .left-content.appear-left,
+#start .right-content.appear-right {
+    opacity: 1;
+    transform: translateX(0);
+}
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* Add a hover effect if you want */
+.fa:hover {
+  opacity: 0.7;
+}
+
+/* Set a specific color for each brand */
+
+/* Facebook */
+.fa-facebook {
+  
+  color: #155585;
+}
+
+/* Twitter */
+.fa-twitter {
+  
+  color: white;
+}
+
+.fa-instagram {
+    color: red;
+}
+
+.fa-gmail {
+    color: white;
+}
+.inquiry-message input[type="submit"] {
+        color: black;
+    }
+
+    .project-box {
+    width: 292.26px;
+    height: 380.95px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    border-radius: 10px; /* Add rounded corners */
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1); /* Add shadow for a pop-up effect */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition effect */
+    margin-right: 20px; /* Add margin between project boxes */
+}
+
+.project-box:hover {
+    transform: translateY(-5px); /* Move the box up slightly on hover */
+    box-shadow: 0 6px 12px rgba(255, 255, 255, 0.2); /* Adjust shadow on hover */
+}
+
+.project-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Adjust project alignment */
+}
+
+.project-image {
+    width: 100%;
+    height: auto;
+}
+
+.project-caption {
+    padding: 10px;
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
+
+.mySlides {
+    display: none; /* Hide slides by default */
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 1s;
+}
+.language-badge {
+    margin-top: 10px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 5px 10px;
+    margin-right: 5px;
+    background-color: #007bff; /* Change background color as needed */
+    color: white;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+/* You can define different styles for badges for each language */
+.badge-python {
+    background-color: #3572A5;
+}
+
+.badge-java {
+    background-color: #B07219;
+}
+
+.badge-html {
+    background-color: #E34C26;
+}
+
+.badge-javascript {
+    background-color: #F7DF1E;
+}
+
+.badge-cplusplus {
+    background-color: #00599C;
+}
+
+.badge-SQL {
+    background-color: #029339;
+}
+#cv .download-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+#cv .download-button:hover {
+    background-color: #0056b3;
+}
+
+
+
+
+
+    </style>
+</head>
+<body>
+<nav class="navbar">
+    <div class="navbar-brand">
+        Laraib Yazdani
+    </div>
+    <ul class="navbar-menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#cv">CV</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<div id="start" class="section">
+    <div class="opening">
+        <div class="right-content">
+            <div class="openingcaption">
+                Turning real world problems<br><br>into real world solutions...
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="home" class="section">
+    <div class="container">
+        
+            <img src="introme.jpeg" class="introme" alt="photograph">
+        
+    </div>
+    <div class="right-content">
+        <div class="captionhome"><strong style="color: rgb(229, 225, 225);">Full stack developer | Cyber security Analyst | Inventive Artisan </strong><br><br>Welcome to my digital playground, where innovation meets inspiration and every line of code tells a story. I'm Laraib Yazdani, a passionate backend and frontend developer on an endless quest for knowledge and creativity.<br><br>
+            In a world brimming with challenges, I see technology as our guiding light, illuminating the path to solutions that shape tomorrow. My journey into the realm of coding was sparked by a simple curiosity – a desire to unravel the mysteries of our digital universe and uncover the endless possibilities it holds.<br><br>
+            With each line of code I write, I'm not just building applications; I'm crafting solutions to real-world problems and paving the way for a brighter future. Every bug conquered, every feature implemented, is a step closer to turning dreams into reality.<br><br>
+            On my projects page, you'll find a curated collection of my endeavors – each one a testament to my dedication, creativity, and love for the craft. From elegant frontend designs to robust backend architectures, every project tells a unique story of innovation and ingenuity.<br><br>
+            Join me on this exhilarating journey of discovery and growth as we harness the power of technology to shape a better world, one line of code at a time.<br><br>
+            Let's build something extraordinary together.
+        </div>
+    </div>
+</div>
+
+
+<div id="projects" class="section">
+    <div class="left-content">
+        <h2>Projects</h2>
+        <div class="project-container">
+            <!-- Project 1 -->
+            <a href="Null">
+            <div class="project-box">
+                <img class="project-image" src="Porject1img1.PNG" alt="Project 1 Image">
+                <div class="project-caption">A real estate database management system with functional frontend and backend development which ensured secure management of the sale and purchase of the widely spread estate business.</div>
+                <div class="language-badge">
+                    <span class="badge">Python</span>
+                    <span class="badge">SQL</span>
+                    <span class="badge">Backend</span>
+                    <span class="badge">Frontend</span>
+                </div>
+            </div>
+            </a>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+            <a href="Project2">
+            <div class="project-box">
+                <img class="project-image" src="Project2img2.jpeg" alt="Project 2 Image">
+                <div class="project-caption">Researched security flaws into the linux operating system and embedded a two layer security feature of a OTP upon login into kernel.</div>
+                <span class="badge">C</span>
+                <span class="badge">Backend</span>
+                <span class="badge">Frontend</span>
+                <br>
+                <span class="badge">CyberSecurity</span>
+            </div>
+            </a>
+            
+
+            
+        </div>
+    </div>
+    <div class="right-content">
+        
+        
+    </div>
+</div>
+
+
+
+
+<div id="cv" class="section">
+    <div class="left-content">
+        <h2>CV</h2>
+        <div>
+            <embed src="CV.pdf" type="application/pdf" width="100%" height="600px">
+        </div>
+        <div>
+            <a href="CV.pdf" download="your_cv.pdf">
+                <button>Download as PDF</button>
+            </a>
+        </div>
+    </div>
+    <div class="right-content">
+    </div>
+</div>
+
+
+<div id="contact" class="section">
+    <div class="left-content">
+        <h2>Contact</h2>
+        <p>Feel free to reach out to me through any of the following channels:</p>
+        <div class="contact-logos">
+            <a href="https://www.facebook.com" class="fa fa-facebook"></a>
+            <a href="https://twitter.com" class="fa fa-twitter"></a>
+            <a href="https://www.linkedin.com" class="fa fa-linkedin"></a>
+            <a href="https://www.instagram.com" class="fa fa-instagram"></a>
+            <a href="mailto:your.email@example.com" class="fa fa-gmail"></a>
+        </div>
+        <div class="inquiry-message">
+            <h3>Send an Inquiry</h3>
+            <form>
+                <label for="email">Your Email:</label><br>
+                <input type="email" id="email" name="email" required><br>
+                <label for="message">Your Message:</label><br>
+                <textarea id="message" name="message" rows="4" cols="50"></textarea><br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        
+    </div>
+    <div class="right-content">
+    </div>
+</div>
+
+
+<script>
+    function isElementInViewport(el) {
+        const rect = el.getBoundingClientRect();
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        if (n > slides.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = slides.length }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slides[slideIndex - 1].style.display = "block";
+    }
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+
+    setInterval(function () {
+        plusSlides(1);
+    }, 1500);
+
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+ 
+    window.addEventListener('scroll', () => {
+        const leftContents = document.querySelectorAll('.left-content');
+        const rightContents = document.querySelectorAll('.right-content');
+        const openingCaption = document.querySelector('.openingcaption');
+
+        leftContents.forEach((leftContent) => {
+            if (isElementInViewport(leftContent)) {
+                leftContent.classList.add('appear-left');
+            }
+        });
+
+        rightContents.forEach((rightContent) => {
+            if (isElementInViewport(rightContent)) {
+                rightContent.classList.add('appear-right');
+            }
+        });
+        if (isElementInViewport(openingCaption)) {
+            openingCaption.classList.add('pop-in');
+        } else {
+            openingCaption.classList.remove('pop-in');
+        }
+    });
+    window.addEventListener('load', function () {
+        showSlides(1); // Call showSlides(1) when the page loads
+    });
+
+    
+    
+
+</script>
+</body>
+
+
+
+    
